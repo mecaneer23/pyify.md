@@ -7,6 +7,17 @@ from argparse import ArgumentParser, Namespace
 from pathlib import Path
 
 
+class Header:
+    def __init__(self, level: int, text: str) -> None:
+        self.level = level
+        self.text = text
+
+
+class Table:
+    def __init__(self, lines: list[str]) -> None:
+        self.lines = lines
+
+
 def parse_args() -> Namespace:
     """Parse command line arguments for pyify"""
     parser = ArgumentParser()
@@ -32,9 +43,7 @@ def main():
     """
 
     filename = Path(parse_args().filename)
-
     lines = read_file(filename)
-
     print_lines(lines)
 
 
